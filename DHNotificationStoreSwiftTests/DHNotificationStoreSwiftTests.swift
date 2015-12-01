@@ -21,16 +21,18 @@ class DHNotificationStoreSwiftTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testItIsPossibleToReceiveANotification() {
+        class TestClass: NotificationHandler {
+            var notificationReceived = false
+            init() {
+                dh_notificationStore.addObserverForName("Test") { [unowned self] note in
+                    self.notificationReceived = true
+                }
+            }
         }
+        let test = TestClass()
+        NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
+        XCTAssertTrue(test.notificationReceived)
     }
     
 }

@@ -11,6 +11,9 @@
 		457F574D1C0D9A64005636C9 /* DHNotificationStoreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F57421C0D9A64005636C9 /* DHNotificationStoreSwift.framework */; };
 		457F57521C0D9A64005636C9 /* DHNotificationStoreSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F57511C0D9A64005636C9 /* DHNotificationStoreSwiftTests.swift */; };
 		457F575D1C0D9A95005636C9 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457F575C1C0D9A95005636C9 /* NotificationHandler.swift */; };
+		457F575F1C0DA71F005636C9 /* DHFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F575E1C0DA71F005636C9 /* DHFoundation.framework */; };
+		457F57611C0DA98C005636C9 /* DHFoundation.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 457F575E1C0DA71F005636C9 /* DHFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		457F57621C0DAA62005636C9 /* DHFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F575E1C0DA71F005636C9 /* DHFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +26,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		457F57601C0DA984005636C9 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				457F57611C0DA98C005636C9 /* DHFoundation.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		457F57421C0D9A64005636C9 /* DHNotificationStoreSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DHNotificationStoreSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		457F57451C0D9A64005636C9 /* DHNotificationStoreSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHNotificationStoreSwift.h; sourceTree = "<group>"; };
@@ -31,6 +48,7 @@
 		457F57511C0D9A64005636C9 /* DHNotificationStoreSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHNotificationStoreSwiftTests.swift; sourceTree = "<group>"; };
 		457F57531C0D9A64005636C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		457F575C1C0D9A95005636C9 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		457F575E1C0DA71F005636C9 /* DHFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DHFoundation.framework; path = Carthage/Build/iOS/DHFoundation.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457F575F1C0DA71F005636C9 /* DHFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				457F574D1C0D9A64005636C9 /* DHNotificationStoreSwift.framework in Frameworks */,
+				457F57621C0DAA62005636C9 /* DHFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +75,7 @@
 		457F57381C0D9A64005636C9 = {
 			isa = PBXGroup;
 			children = (
+				457F575E1C0DA71F005636C9 /* DHFoundation.framework */,
 				457F57441C0D9A64005636C9 /* DHNotificationStoreSwift */,
 				457F57501C0D9A64005636C9 /* DHNotificationStoreSwiftTests */,
 				457F57431C0D9A64005636C9 /* Products */,
@@ -128,6 +149,7 @@
 				457F57481C0D9A64005636C9 /* Sources */,
 				457F57491C0D9A64005636C9 /* Frameworks */,
 				457F574A1C0D9A64005636C9 /* Resources */,
+				457F57601C0DA984005636C9 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,6 +339,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DHNotificationStoreSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -335,6 +361,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DHNotificationStoreSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -347,6 +377,10 @@
 		457F575A1C0D9A64005636C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DHNotificationStoreSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.davidhardiman.DHNotificationStoreSwiftTests;
@@ -357,6 +391,10 @@
 		457F575B1C0D9A64005636C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DHNotificationStoreSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.davidhardiman.DHNotificationStoreSwiftTests;
