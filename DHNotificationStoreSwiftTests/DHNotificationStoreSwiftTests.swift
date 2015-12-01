@@ -20,19 +20,36 @@ class DHNotificationStoreSwiftTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testItIsPossibleToReceiveANotification() {
-        class TestClass: NotificationHandler {
-            var notificationReceived = false
-            init() {
-                dh_notificationStore.addObserverForName("Test") { [unowned self] note in
-                    self.notificationReceived = true
-                }
-            }
+
+    class TestClass: NotificationHandler {
+        var notificationReceived = false
+        init() {
         }
+    }
+
+    func testItIsPossibleToReceiveANotification() {
         let test = TestClass()
+        test.dh_notificationStore.addObserverForName("Test") { [unowned test] note in
+            test.notificationReceived = true
+        }
         NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
         XCTAssertTrue(test.notificationReceived)
     }
-    
+
+    func testNotificationBlocksDeRegisterAtDeallocation() {
+        var notificationReceived = false
+        autoreleasepool {
+            var test: TestClass? = TestClass()
+            test?.dh_notificationStore.addObserverForName("Test") { note in
+                notificationReceived = true
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
+            XCTAssertTrue(notificationReceived)
+            notificationReceived = false
+            test = nil
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
+        XCTAssertFalse(notificationReceived)
+    }
+
 }
