@@ -10,14 +10,14 @@ import DHFoundation
 import ObjectiveC.runtime
 
 /// Protocol to conform to to gain DHNotificationStore functionality
-protocol NotificationHandler: class {
+public protocol NotificationHandler: class {
 
     /// Notification store to use
     var dh_notificationStore: DHNotificationStore { get }
 }
 
 private var dh_notificationStoreKey: UInt8 = 0
-extension NotificationHandler {
+public extension NotificationHandler {
 
     var dh_notificationStore: DHNotificationStore {
         get {
