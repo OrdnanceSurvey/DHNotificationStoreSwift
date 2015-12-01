@@ -21,10 +21,12 @@ public extension NotificationHandler {
 
     var dh_notificationStore: DHNotificationStore {
         get {
+            objc_sync_enter(self)
+            defer { objc_sync_exit(self) }
             var store = objc_getAssociatedObject(self, &dh_notificationStoreKey) as? DHNotificationStore
             if store == nil {
                 store = DHNotificationStore()
-                objc_setAssociatedObject(self, &dh_notificationStoreKey, store, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &dh_notificationStoreKey, store, .OBJC_ASSOCIATION_RETAIN)
             }
             return store!
         }
