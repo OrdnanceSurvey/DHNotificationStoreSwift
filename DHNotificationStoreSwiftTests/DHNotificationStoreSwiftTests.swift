@@ -29,10 +29,10 @@ class DHNotificationStoreSwiftTests: XCTestCase {
 
     func testItIsPossibleToReceiveANotification() {
         let test = TestClass()
-        test.dh_notificationStore.addObserverForName("Test") { [unowned test] note in
+        test.dh_notificationStore.addObserver(forName: "Test") { [unowned test] note in
             test.notificationReceived = true
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Test"), object: nil)
         XCTAssertTrue(test.notificationReceived)
     }
 
@@ -40,15 +40,15 @@ class DHNotificationStoreSwiftTests: XCTestCase {
         var notificationReceived = false
         autoreleasepool {
             var test: TestClass? = TestClass()
-            test?.dh_notificationStore.addObserverForName("Test") { note in
+            _ = test?.dh_notificationStore.addObserver(forName: "Test") { note in
                 notificationReceived = true
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Test"), object: nil)
             XCTAssertTrue(notificationReceived)
             notificationReceived = false
             test = nil
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("Test", object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Test"), object: nil)
         XCTAssertFalse(notificationReceived)
     }
 
